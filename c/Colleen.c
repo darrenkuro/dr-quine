@@ -1,8 +1,8 @@
 #include <stdio.h> // outside comment
 
 void quine() {
-    char *s = "#include <stdio.h> // outside comment%c%cvoid quine() {%c    char *s = %c%s%c;%c    printf(s, 10, 10, 10, 34, s, 34, 10, 10, 10, 10, 10, 10, 10);%c}%c%cint main() {%c    quine(); // inside comment%c}%c";
-    printf(s, 10, 10, 10, 34, s, 34, 10, 10, 10, 10, 10, 10, 10);
+    char *s = "#include <stdio.h> // outside comment%1$c%1$cvoid quine() {%1$c    char *s = %2$c%s%2$c;%1$c    printf(s, 10, 34, s);%1$c}%1$c%1$cint main() {%1$c    quine(); // inside comment%1$c}%1$c";
+    printf(s, 10, 34, s);
 }
 
 int main() {
