@@ -53,6 +53,9 @@ Briefly explain what this project does and why it exists.
 
 ## 📝 Notes & Lessons
 
+- The general idea: Colleen will print the quine on stdout, Grace will print the quine in a file, Sully will print the quine in a file and execute it.
+- Marco in assembly is similar to a `#define F(X)` in C.
+
 ---
 
 ## 📄 License
