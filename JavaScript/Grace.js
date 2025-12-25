@@ -1,10 +1,10 @@
-(function quine() {
+(function grace() {
     /*
         comment
     */
     const fs = require('fs');
     const file = "Grace_kid.js";
-    const code = `(${quine.toString()})()
+    const code = `(${grace.toString()})()
 `;
 
     fs.writeFile(file, code, function(e) {

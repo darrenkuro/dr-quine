@@ -2,12 +2,12 @@
     Outside comment
 */
 
-function quine() {
+function colleen() {
     const s = x => `/*
     Outside comment
 */
 
-function quine() {
+function colleen() {
     const s = ${x}
     console.log(s(s));
 }
@@ -16,7 +16,7 @@ function main() {
     /*
         Inside comment
     */
-   quine()
+   colleen()
 }
 
 main()`
@@ -27,7 +27,7 @@ function main() {
     /*
         Inside comment
     */
-   quine()
+   colleen()
 }
 
 main()
