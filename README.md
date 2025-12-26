@@ -56,6 +56,8 @@ Dr-Quine is a multi-language exploration of self-reproducing programs (quines). 
 - The general idea: Colleen will print the quine on stdout, Grace will print the quine in a file, Sully will print the quine in a file and execute it.
 - Marco in assembly is similar to a `#define F(X)` in C.
 - `awk '{gsub(/%/, "%%"); gsub(/"/, "%2$c"); printf "%s%%1$c", $0 }' x.s`
+- Different types of printf.
+- equ vs define in ASM: equ evaluates expression immediately, stores numeric result; define is pure text substitution, re-evaluated each use.
 
 ---
 
