@@ -2,26 +2,26 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="License"/>
-    <img src="https://img.shields.io/badge/status-development-brightgreen?style=flat-square&logo=git&logoColor=white" alt="Status">
+    <img src="https://img.shields.io/badge/status-finished-brightgreen?style=flat-square&logo=git&logoColor=white" alt="Status">
     <!-- <img src="https://img.shields.io/badge/score-125%2F100-3CB371?style=flat-square&logo=42&logoColor=white" alt="Score"/> -->
     <!-- <img src="https://img.shields.io/badge/date-May%2026,%202023-ff6984?style=flat-square&logo=Cachet&logoColor=white" alt="Date"/> -->
 </p>
 
-> A short, clear one-liner describing what your project does.
+> A self-replicating program in C, assembly, and javaScript.
 
 ---
 
 ## 🚀 Overview
 
-Briefly explain what this project does and why it exists.
+Dr-Quine is a multi-language exploration of self-reproducing programs (quines). The project implements three variants — Colleen, Grace, and Sully — in C, x86-64 Assembly, and JavaScript.
 
-## 🧰 Tech Stack: ![C](https://img.shields.io/badge/-C-A8B9CC?style=flat-square&logo=C&logoColor=black) ![Make](https://img.shields.io/badge/-Make-000000?style=flat-square&logo=gnu&logoColor=white)
+## 🧰 Tech Stack: ![C](https://img.shields.io/badge/-C-A8B9CC?style=flat-square&logo=C&logoColor=black) ![JavaScript](https://img.shields.io/badge/-JavaScript-f7df1e?style=flat-square&logo=JavaScript&logoColor=black) ![Assembly](https://img.shields.io/badge/-Assembly-000000?style=flat-square&logo=assemblyscript&logoColor=white) ![Make](https://img.shields.io/badge/-Make-000000?style=flat-square&logo=gnu&logoColor=white)
 
 ## 📦 Features
 
-- Feature 1 – brief explanation
-- Feature 2 – brief explanation
-- Feature 3 – optional line for advanced/unique capability
+- Multi-language quine: Implements the same quine concepts consistently across C, Assembly (NASM), and JavaScript.
+- Different variants: Includes Colleen (prints itself), Grace (writes a copy to disk), and Sully (self-replicating countdown).
+- Automated verification: Makefiles test each program using byte-for-byte comparisons to guarantee exact reproduction.
 
 ---
 
@@ -29,7 +29,7 @@ Briefly explain what this project does and why it exists.
 
 ### Prerequisites
 
-- Compiler for C (e.g. `gcc` or `clang`) and `make`
+- Compiler for C (e.g. `gcc` or `clang`), `make`, `node`, `nasm`
 
 ### Installation & Usage
 
@@ -55,7 +55,7 @@ Briefly explain what this project does and why it exists.
 
 - The general idea: Colleen will print the quine on stdout, Grace will print the quine in a file, Sully will print the quine in a file and execute it.
 - Marco in assembly is similar to a `#define F(X)` in C.
-`awk '{gsub(/%/, "%%"); gsub(/"/, "%2$c"); printf "%s%%1$c", $0 }' x.s`
+- `awk '{gsub(/%/, "%%"); gsub(/"/, "%2$c"); printf "%s%%1$c", $0 }' x.s`
 
 ---
 
