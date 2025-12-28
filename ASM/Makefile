@@ -9,6 +9,10 @@ AS		:=	nasm
 ASFLAGS	:=	-f elf64
 RM		:=	rm -rf
 
+# ------------------------ Colors
+RESET	:=	\033[0m
+GREEN 	:=	\033[32m
+
 # ------------------------ Build Settings
 .DEFAULT_GOAL	:= all
 
@@ -20,13 +24,13 @@ all: $(COLLEEN) $(GRACE) $(SULLY)
 clean:
 	@printf "Removing: Generated files..."
 	@$(RM) $(COLLEEN).o $(GRACE).o $(SULLY).o $(GRACE)_kid.s $(SULLY)_[0-5].s $(SULLY)_[0-5].o $(SULLY)_[0-5]
-	@echo " [OK]"
+	@echo " $(GREEN)[OK]$(RESET)"
 
 .PHONY: fclean
 fclean: clean
 	@printf "Removing: Binary files..."
 	@$(RM) $(COLLEEN) $(GRACE) $(SULLY)
-	@echo " [OK]"
+	@echo " $(GREEN)[OK]$(RESET)"
 
 .PHONY: re
 re: fclean all
@@ -34,19 +38,19 @@ re: fclean all
 %: %.s
 	@printf "Building: %s..." "$@"
 	@$(AS) $(ASFLAGS) $< -o $@.o && $(CC) -o $@ $@.o
-	@echo " [OK]"
+	@echo " $(GREEN)[OK]$(RESET)"
 
 .PHONY: test
 test: all
-	@./$(COLLEEN) | diff - $(COLLEEN).s && echo "TESTING:  Colleen [OK]"
-	@./$(GRACE); diff $(GRACE).s $(GRACE)_kid.s && echo "TESTING:  Grace [OK]"
+	@./$(COLLEEN) | diff - $(COLLEEN).s && echo "TESTING:  Colleen $(GREEN)[OK]$(RESET)"
+	@./$(GRACE); diff $(GRACE).s $(GRACE)_kid.s && echo "TESTING:  Grace $(GREEN)[OK]$(RESET)"
 	@./$(SULLY); \
 	i=0; \
 	while [ $$i -le 5 ]; do \
 		test -f "$(SULLY)_$$i.s" || { echo "Missing $(SULLY)_$$i.s"; exit 1; }; \
 		i=$$((i + 1)); \
 	done
-	@diff $(SULLY).s $(SULLY)_5.s && echo "TESTING:  Sully [OK]"
+	@diff $(SULLY).s $(SULLY)_5.s && echo "TESTING:  Sully $(GREEN)[OK]$(RESET)"
 	@$(MAKE) --no-print-directory fclean
 
 .DELETE_ON_ERROR:   # Delete target build that's incomplete

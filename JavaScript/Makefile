@@ -7,6 +7,10 @@ SULLY	:=	Sully
 NODE	:=	node
 RM		:=	rm -rf
 
+# ------------------------ Colors
+RESET	:=	\033[0m
+GREEN 	:=	\033[32m
+
 # ------------------------ Build Settings
 .DEFAULT_GOAL	:= all
 
@@ -18,7 +22,7 @@ all: test
 clean:
 	@printf "Removing: Generated files..."
 	@$(RM) $(GRACE)_kid.js $(SULLY)_[0-5].js
-	@echo " [OK]"
+	@echo " $(GREEN)[OK]$(RESET)"
 
 .PHONY: fclean
 fclean: clean
@@ -28,15 +32,15 @@ re: fclean all
 
 .PHONY: test
 test:
-	@$(NODE) $(COLLEEN).js | diff - $(COLLEEN).js && echo "TESTING:  Colleen [OK]"
-	@$(NODE) $(GRACE).js; diff $(GRACE).js $(GRACE)_kid.js && echo "TESTING:  Grace [OK]"
+	@$(NODE) $(COLLEEN).js | diff - $(COLLEEN).js && echo "TESTING:  Colleen $(GREEN)[OK]$(RESET)"
+	@$(NODE) $(GRACE).js; diff $(GRACE).js $(GRACE)_kid.js && echo "TESTING:  Grace $(GREEN)[OK]$(RESET)"
 	@$(NODE) $(SULLY).js; \
 	i=0; \
 	while [ $$i -le 5 ]; do \
 		test -f "$(SULLY)_$$i.js" || { echo "Missing $(SULLY)_$$i.js"; exit 1; }; \
 		i=$$((i + 1)); \
 	done
-	@diff $(SULLY).js $(SULLY)_5.js && echo "TESTING:  Sully [OK]"
+	@diff $(SULLY).js $(SULLY)_5.js && echo "TESTING:  Sully $(GREEN)[OK]$(RESET)"
 	@$(MAKE) --no-print-directory fclean
 
 .DELETE_ON_ERROR:   # Delete target build that's incomplete
