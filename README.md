@@ -29,24 +29,45 @@ Dr-Quine is a multi-language exploration of self-reproducing programs (quines). 
 
 ### Prerequisites
 
-- Compiler for C (e.g. `gcc` or `clang`), `make`, `node`, `nasm`
+- Compiler for C (e.g. `gcc` or `clang`), `make`, `node`
+- `nasm` (Assembly only — requires Linux x86-64 due to raw syscalls and ELF64 object format)
 
 ### Installation & Usage
 
 ```bash
+git clone https://github.com/darrenkuro/dr-quine.git
+cd dr-quine
 
+# Build and test everything
+make test
+
+# Or work with a specific language
+cd C && make test
+cd JavaScript && make test
+cd ASM && make test          # Requires nasm + Linux x86-64
 ```
 
-### Examples & Demo
+### Examples
 
 ```bash
+# Colleen — prints its own source code
+cd C && make Colleen && ./Colleen
 
+# Grace — writes a copy of itself to Grace_kid.c
+cd C && make Grace && ./Grace && diff Grace.c Grace_kid.c
+
+# Sully — self-replicating countdown (5 → 4 → 3 → 2 → 1 → 0)
+cd C && make Sully && ./Sully && ls Sully_*.c
 ```
 
 ### Development
 
 ```bash
-
+make            # Build all languages
+make test       # Build + run all tests
+make clean      # Remove generated files
+make fclean     # Remove generated files + binaries
+make re         # Full rebuild
 ```
 
 ---
